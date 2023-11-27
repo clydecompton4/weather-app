@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="card">
+      <div class="search">
+        <input type="text" placeholder="enter city name" spellcheck="false" />
+        <button><img src="images/search.png" /></button>
+      </div>
+      <div class="weather">
+        <img src="images/rain.png" class="weather-icon" />
+        <h1 class="temp">70°F</h1>
+        <h2 class="city">New York</h2>
+        <div class="details">
+          <div class="col">
+            <img src="images/humidity.png" />
+            <div>
+              <p class="humidity">50%</p>
+              <p>Humidity</p>
+            </div>
+          </div>
+          <div class="col">
+            <img src="images/wind.png" />
+            <div>
+              <p class="wind">15 mph</p>
+              <p>Wind Speed</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const apiKey = "765287015485a3a8289e647deaca6032";
+      const apiUrl =
+        "https://api.openweathermap.org/data/2.5/weather?=units=imperial&q=bangalore";
+
+      async function checkWeather() {
+        const response = await fetch(apiUrl + `&appid=${apiKey}`);
+        var data = await response.json();
+
+        console.log(data);
+
+        document.querySelector(".city").innerHTML = data.name;
+        document.querySelector(".temp").innerHTML = data.main.temp;
+        document.querySelector(".humidity").innerHTML = data.main.humidity;
+        document.querySelector(".wind").innerHTML = data.wind.speed;
+      }
+
+      checkWeather();
+
+
+
+
+      function addNumbers(num1, num2) {
+        return num1 + num 2;
+      }
+
+      console.log(addNumbers(5, 3));
+
+      function isEvenOrOdd(num) {
+        if(num % 2 === 0) {
+          return 'Even'
+        } else {
+          return 'Odd'
+        }
+      }
+
+
+      function squareArray(numbers) {
+        let squared = [];
+
+        for (let i = 0 ; i <= numbers.length; i++) {
+          squared.push(numbers[i] + numbers[i]);
+        }
+        return squared;
+      }
+
+
+      console.log(squareArray([2, 3, 4]));
+    </script>
+  </body>
+</html>
